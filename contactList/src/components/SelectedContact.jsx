@@ -9,16 +9,16 @@ export default function SelectedContact({ selectedContactId, setSelectedContanta
             try{
                 const response = await fetch(`https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`);
                 console.log('response: ', response);
-                const result = await response.json();
-                setSelectedContact(result);
-                console.log('result: ', result);
+                const data = await response.json();
+                setSelectedContact(data);
+                console.log('result: ', data);
             } catch (error) {console.error(error)
 
             }
         }
         fetchContact();
     }, []);
-    return (selectedContactId ? (<div>
+    return (selectedContact ? (<div>
             <h2>{selectedContact.name}</h2>
             <p>{selectedContact.email}</p>
             <p>{selectedContact.address.street}</p>
